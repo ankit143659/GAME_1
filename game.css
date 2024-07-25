@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;
+}
+.choices{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+}
+.choice{
+    height: 165px;
+    width: 165px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    flex-wrap: wrap;
+}
+.choice:hover{
+    cursor: pointer;
+    background-color: #081631;
+}
+h1{
+    background-color:#081631;
+    color: aliceblue;
+    height: 5rem;
+    line-height: 5rem;
+}
+img{
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.score_board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    gap: 5rem;
+}
+#user #comp{
+    font-size: 4rem;
+}
+#mssg{
+    background-color: #081631;
+    color: aliceblue;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.mssg_container{
+    margin-top: 2rem;
+}
+.hide{
+    display: none;
+}
+#winner{
+    margin-top: 2rem;
+}
+.userwin{
+    background-color: green;
+    color: black;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.compwin{
+    background-color: red;
+    color: black;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.tie{
+    background-color: blue;
+    color: black;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+#reset_btn{
+    background-color: #081631;
+    color: aliceblue;
+    font-size: 2rem;
+    display: inline;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+#reset {
+    margin-top: 3rem;
+}
+
+.display_choice{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    gap: 2rem;
+    border-radius: 2rem;
+}
