@@ -31,8 +31,7 @@ async function ListenSpeech() {
 
     recognition.onresult = (event) => {
       userValue = event.results[0][0].transcript;
-        resolve();
-     
+      resolve();
     };
     recognition.onspeechend = function () {
       recognition.stop();
@@ -45,29 +44,60 @@ async function ListenSpeech() {
   });
 }
 
-let uservalueLowercase;
-if(userValue==="Rock."){
-    uservalueLowercase="rock";
-}
-if (userValue==="Paper."){
-    uservalueLowercase="paper"
-}
-if(userValue==="Scissor."){
-    uservalueLowercase="scissor"
-}
+const playgame2 = (userchoice) => {
+  if (userchoice === "rock." || userchoice === "rock") {
+    userchoice = "rock";
+  } else if (userchoice === "paper." || userchoice === "paper") {
+    userchoice = "paper";
+  } else {
+    userchoice = "scissor";
+  }
+  console.log(userchoice);
 
-const checkValue =()=>{
-    if (uservalueLowercase!=="rock" || uservalueLowercase!=="paper" || uservalueLowercase!=="scisor" ) {
-        alert("please speak valid words");
-      } else {
-        console.log(userValue);
+  const compchoice = genCompChoice();
+  if (userchoice === compchoice) {
+    tiescore++;
+    tie();
+  } else {
+    let userWin = true;
+    if (userchoice === "rock") {
+      userWin = compchoice === "paper" ? false : true;
+    } else if (userchoice === "paper") {
+      userWin = compchoice === "scissor" ? false : true;
+    } else {
+      userWin = compchoice === "rock" ? false : true;
     }
+    showWinner(userWin);
+  }
+};
+
+async function checkValue() {
+  return new Promise((resolve, reject) => {
+    if (
+      userValue.toLowerCase() === "rock" ||
+      userValue.toLowerCase() === "rock."
+    ) {
+      resolve();
+    } else if (
+      userValue.toLowerCase() === "paper" ||
+      userValue.toLowerCase() === "paper."
+    ) {
+      resolve();
+    } else if (
+      userValue.toLowerCase() === "scissor" ||
+      userValue.toLowerCase() === "scissor."
+    ) {
+      resolve();
+    } else {
+      alert("Please speak valid value (Rock-Paper-Scissor)");
+      reject();
+    }
+  });
 }
 
-
-const check = () => {
-    console.log(uservalueLowercase);
-  playgame(uservalueLowercase);
+const check = async () => {
+  await checkValue();
+  playgame2(userValue.toLowerCase());
   reset.classList.remove("hide");
   resetbtn();
 };
@@ -75,7 +105,6 @@ const check = () => {
 startGame.addEventListener("click", async function () {
   try {
     await ListenSpeech();
-    checkValue();
     check();
   } catch (error) {}
 });
@@ -90,32 +119,20 @@ choices.forEach((choice) => {
 });
 
 const playgame = (userchoice) => {
+  console.log(userchoice);
+
   const compchoice = genCompChoice();
-  if (userchoice === compchoice) {
+  if (compchoice === userchoice) {
     tiescore++;
     tie();
   } else {
     let userWin = true;
     if (userchoice === "rock") {
-      if (compchoice === "paper") {
-        userWin = false;
-      } 
-       else {
-        userWin = true;
-      }
-    } else if (userchoice =="paper") {
-      if (compchoice === "scissor") {
-        userWin = false;
-      } 
-       else {
-        userWin = true;
-      }
+      userWin = compchoice === "paper" ? false : true;
+    } else if (userchoice === "paper") {
+      userWin = compchoice === "scissor" ? false : true;
     } else {
-      if (compchoice === "rock") {
-        userWin = false;
-      }  else {
-        userWin = true;
-      }
+      userWin = compchoice === "rock" ? false : true;
     }
     showWinner(userWin);
   }
