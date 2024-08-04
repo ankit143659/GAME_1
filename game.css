@@ -56,6 +56,16 @@ img{
     padding: 1rem;
     border-radius: 1rem;
 }
+
+#Start{
+    background-color: #ef02b8;
+    color: aliceblue;
+    font-size: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    margin-left: 2rem;
+    border-radius: 1rem;
+}
 .mssg_container{
     margin-top: 2rem;
 }
