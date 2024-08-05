@@ -221,7 +221,8 @@ const tie = () => {
 
 const speechWord = (text) => {
   const voices= speechSynthesis.getVoices();
-  const maleVoice = voices.find(voice=> voice.name.includes("Male"));
+  const maleVoice = voices.find(voice=> voice.name.includes("David"));
+  console.log(maleVoice);
   const speech = new SpeechSynthesisUtterance(text);
   speech.voice=maleVoice || voices[0];
   window.speechSynthesis.speak(speech);
